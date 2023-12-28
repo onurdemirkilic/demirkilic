@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Sayfa Bulunamadı</title>
+    <style>
+        @keyframes glitch {
+            0% {
+                transform: scale(1);
+            }
+            20% {
+                transform: scale(0.9);
+            }
+            40% {
+                transform: scale(1.1);
+            }
+            60% {
+                transform: scale(0.95);
+            }
+            80% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 20%;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">404</h1>
+    <p>Üzgünüz, aradığınız sayfa bulunamadı.</p>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Genel stil ve düzen */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Kargo takip sayfası stil */
+    .container {
+      width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .tracking-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .tracking-button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .loading {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .tracking-results {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .tracking-status {
+      font-weight: bold;
+    }
+
+    .tracking-progress {
+      margin-top: 10px;
+      background-color: #f2f2f2;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .tracking-progress-bar {
+      height: 100%;
+      width: 0;
+      background-color: #db0b0b;
+      transition: width 0.5s;
+    }
+
+    /* Animasyonlar */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kargo Takip</h1>
+    <input type="text" id="tracking-input" class="tracking-input" placeholder="Kargo takip numarasını girin">
+    <button onclick="track()" class="tracking-button">Takip Et</button>
+
+    <div id="loading" class="loading">
+      <span class="loading"></span> Kontrol Ediliyor...
+    </div>
+
+    <div id="tracking-results" class="tracking-results">
+      <div class="tracking-status fade-in">
+        Kargo Durumu: <span id="tracking-status"></span>
+      </div>
+      <div class="tracking-progress fade-in">
+        <div id="tracking-progress-bar" class="tracking-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function track() {
+      var input = document.getElementById("tracking-input");
+      var trackingNumber = input.value;
+      var trackingStatus = document.getElementById("tracking-status");
+      var progressBar = document.getElementById("tracking-progress-bar");
+      var loading = document.getElementById("loading");
+      var trackingResults = document.getElementById("tracking-results");
+
+      loading.style.display = "block";
+      trackingResults.style.display = "none";
+
+      // Simüle edilmiş bir kargo takip işlemi
+      // Örneğin, backend'e istek gönderilip gerçek sonuçlar alınabilir
+      var progress = 0;
+      var interval = setInterval(function() {
+        progress += 20;
+        progressBar.style.width = progress + "%";
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          loading.style.display = "none";
+          trackingStatus.innerText = "Böyle bir kargo numarası sisteme işlenmemiş.";
+          trackingResults.style.display = "block";
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
